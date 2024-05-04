@@ -40,10 +40,6 @@ class Uploader extends Component {
         images: [...prevState.images, {
           name: file.name,    
           url: `http://amplify-mobirtatest02-dev-1daaf-deployment.s3-website-us-east-1.amazonaws.com/${file.name}`
-<<<<<<< HEAD
-=======
-
->>>>>>> a72bb35d264a912c0a503db8ff929635efb8652c
         }],
         uploadCompleted: true
       }));
