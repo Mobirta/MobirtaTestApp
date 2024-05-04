@@ -1,0 +1,30 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mobirtatest02-dev-1daaf-authRole",
+      "UnauthRoleArn": "arn:aws:iam::961753800142:role/amplify-mobirtatest02-dev-1daaf-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::961753800142:role/amplify-mobirtatest02-dev-1daaf-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-mobirtatest02-dev-1daaf-deployment",
+      "UnauthRoleName": "amplify-mobirtatest02-dev-1daaf-unauthRole",
+      "StackName": "amplify-mobirtatest02-dev-1daaf",
+      "StackId": "arn:aws:cloudformation:us-east-1:961753800142:stack/amplify-mobirtatest02-dev-1daaf/87beb1c0-09ca-11ef-9a86-0e39ff96512f",
+      "AmplifyAppId": "denowgri3blwm",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-mobirtatest02-dev-1daaf-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "function": {
+        "mobirtatest01": {
+          "deploymentBucketName": "amplify-mobirtatest02-dev-1daaf-deployment",
+          "s3Key": "amplify-builds/mobirtatest01-334d796e4c754f506a57-build.zip"
+        }
+      },
+      "auth": {
+        "mobirtatest02": {}
+      },
+      "api": {
+        "api0562b1e3": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "api": {
+    "api0562b1e3": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "mobirtatest01"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "auth": {
+    "mobirtatest02": {
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "managed"
+    }
+  },
+  "function": {
+    "mobirtatest01": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_mobirtatest01_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "mobirtatest01"
+        }
+      ]
+    },
+    "AMPLIFY_function_mobirtatest01_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "mobirtatest01"
+        }
+      ]
+    }
+  }
+}
