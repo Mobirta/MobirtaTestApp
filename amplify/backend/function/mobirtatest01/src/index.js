@@ -23,7 +23,7 @@ const server = awsServerlessExpress.createServer(app);
 
 app.get('/get-presigned-url', async (req, res) => {
     const params = {
-        Bucket: 'http://amplify-mobirtatest02-dev-1daaf-deployment.s3-website-us-east-1.amazonaws.com',
+        Bucket: 'amplify-mobirtatest02-dev-1daaf-deployment',
         Key: req.query.filename,
         Expires: 60, // URLの有効期限(秒)
         ContentType: req.query.filetype
