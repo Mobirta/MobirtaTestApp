@@ -9,13 +9,14 @@ class Uploader extends Component {
     this.state = {
       isUploading: false,
       images: [],
-      uploadCompleted: false
+      uploadCompleted: false,
+      errorMessage: ''
     };
     this.handleOnDrop = this.handleOnDrop.bind(this);
   }
 
   handleOnDrop(files) {
-    this.setState({ isUploading: true, uploadCompleted: false });
+    this.setState({ isUploading: true, uploadCompleted: false, errorMessage: '' });
 
     files.forEach(file => {
       this.getPresignedUrlAndUpload(file);
@@ -29,6 +30,9 @@ class Uploader extends Component {
         filetype: file.type
       }
     }).then(response => {
+      if (!response.data.url) {
+        throw new Error('Failed to get the presigned URL');
+      }
       const options = {
         headers: {
           'Content-Type': file.type
@@ -39,18 +43,19 @@ class Uploader extends Component {
       this.setState(prevState => ({
         images: [...prevState.images, {
           name: file.name,    
-          url: `http://amplify-mobirtatest02-dev-1daaf-deployment.s3-website-us-east-1.amazonaws.com/${file.name}`
+          url: `https://amplify-mobirtatest02-dev-1daaf-deployment.s3-website-us-east-1.amazonaws.com/${file.name}`
         }],
-        uploadCompleted: true
+        uploadCompleted: true,
+        isUploading: false
       }));
     }).catch(error => {
       console.error('Upload failed:', error);
-      this.setState({ isUploading: false });
+      this.setState({ isUploading: false, errorMessage: 'Upload failed. Please try again.' });
     });
   }
 
   render() {
-    const { isUploading, uploadCompleted, images } = this.state;
+    const { isUploading, uploadCompleted, images, errorMessage } = this.state;
     return (
       <div style={{ width: 960, margin: '20px auto' }}>
         <h1>ファイルアップロード</h1>
@@ -64,6 +69,7 @@ class Uploader extends Component {
         </Dropzone>
         {isUploading && <div>ファイルをアップロードしています…</div>}
         {uploadCompleted && <div>アップロードが完了しました！</div>}
+        {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
         {images.length > 0 && (
           <div style={{ margin: 30 }}>
             {images.map(({ name, url }) => (
